@@ -11,6 +11,7 @@ import { AssignItemsScreen } from './src/screens/AssignItemsScreen';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { NewBillScreen } from './src/screens/NewBillScreen';
 import { ReceiptImportScreen } from './src/screens/ReceiptImportScreen';
+import { ReceiptReviewScreen } from './src/screens/ReceiptReviewScreen';
 import { ActivityScreen, BillDetailScreen, HistoryScreen, ProfileScreen } from './src/screens/PlaceholderScreens';
 import { SummaryScreen } from './src/screens/SummaryScreen';
 import { BillHistoryEntry, Person, ReceiptItem, ScreenName, SplitMode } from './src/types';
@@ -270,7 +271,7 @@ export default function App() {
           onTakePhoto={takeReceiptPhoto}
           onUpload={uploadReceipt}
           onUseDemo={resetReceiptToDemo}
-          onDone={() => setScreen('splitSetup')}
+          onDone={() => setScreen('receiptReview')}
         />
       );
     }
@@ -291,6 +292,23 @@ export default function App() {
           onPeopleCountChange={updatePeopleCount}
           onPersonChange={updatePerson}
           onContinue={continueFromSetup}
+        />
+      );
+    }
+
+    if (screen === 'receiptReview') {
+      return (
+        <ReceiptReviewScreen
+          merchant={merchant}
+          items={items}
+          tip={tip}
+          onTipChange={setTip}
+          onCancel={() => setScreen('importReceipt')}
+          onContinue={(nextItems, nextTip) => {
+            setItems(nextItems);
+            setTip(nextTip);
+            setScreen('splitSetup');
+          }}
         />
       );
     }

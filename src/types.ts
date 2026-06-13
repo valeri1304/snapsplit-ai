@@ -1,4 +1,4 @@
-export type ScreenName = 'home' | 'history' | 'billDetail' | 'importReceipt' | 'splitSetup' | 'assignItems' | 'summary' | 'activity' | 'profile';
+export type ScreenName = 'home' | 'history' | 'billDetail' | 'importReceipt' | 'receiptReview' | 'splitSetup' | 'assignItems' | 'summary' | 'activity' | 'profile';
 
 export type SplitMode = 'manual' | 'equal';
 
